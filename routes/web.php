@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TipeKamarController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,32 @@ use App\Http\Controllers\LaporanController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+  /*
+    |--------------------------------------------------------------------------
+    | PDF
+    |--------------------------------------------------------------------------
+    */
+
+
+    Route::get('/receipt/pdf/{id}',
+        [PaymentController::class,'downloadPdf'])
+        ->name('payment.pdf');
+
+/*
+|--------------------------------------------------------------------------
+| Login
+|--------------------------------------------------------------------------
+*/
+
+
+Route::get('/login', [AuthController::class,'showLogin'])
+    ->name('login');
+
+
+Route::post('/login', [AuthController::class,'login'])
+    ->name('login.process');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -137,6 +164,19 @@ Route::get('/laporan',
 Route::get('/laporan/export',
 [LaporanController::class,'export'])
 ->name('laporan.export');
+
+/*
+    |--------------------------------------------------------------------------
+    | Setting
+    |--------------------------------------------------------------------------
+    */
+
+    Route::resource('setting',SettingController::class);
+
+    Route::post('/setting/password',
+    [SettingController::class,'updatePassword'])
+    ->name('setting.password');
+
 
 
 });
