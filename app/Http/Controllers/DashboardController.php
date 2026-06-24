@@ -34,7 +34,7 @@ class DashboardController extends Controller
             ->take(5)
             ->get();
 
-        return view('admin.dashboard', compact(
+        return views('admin.dashboard', compact(
             'totalKamar',
             'kamarTerisi',
             'kamarTersedia',
