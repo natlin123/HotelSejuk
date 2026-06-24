@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KamarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,3 +83,13 @@ Route::get('/payment-success/{id}',
 Route::get('/dashboard',
         [DashboardController::class,'index'])
         ->name('dashboard');
+
+ /*
+    |--------------------------------------------------------------------------
+    | Kamar
+    |--------------------------------------------------------------------------
+    */
+
+
+    Route::resource('kamar', KamarController::class);
+
