@@ -8,6 +8,7 @@ use App\Http\Controllers\KamarController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TipeKamarController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LaporanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -122,4 +123,20 @@ Route::post('/logout',
 
 
     Route::resource('tipe', TipeKamarController::class);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Laporan
+    |--------------------------------------------------------------------------
+    */
+Route::get('/laporan',
+[LaporanController::class,'index'])
+->name('laporan.index');
+
+Route::get('/laporan/export',
+[LaporanController::class,'export'])
+->name('laporan.export');
+
+
 });
