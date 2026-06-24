@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,3 +71,14 @@ Route::get('/payment-success/{id}',
     Route::get('/receipt/pdf/{id}',
     [PaymentController::class, 'downloadPdf'])
     ->name('payment.pdf');
+
+
+/*
+|--------------------------------------------------------------------------
+| Admin & Resepsionis
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/dashboard',
+        [DashboardController::class,'index'])
+        ->name('dashboard');
