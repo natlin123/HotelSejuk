@@ -6,6 +6,8 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TipeKamarController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,9 +83,17 @@ Route::get('/payment-success/{id}',
 |--------------------------------------------------------------------------
 */
 
+Route::middleware('auth')->group(function () {
+
+
 Route::get('/dashboard',
         [DashboardController::class,'index'])
         ->name('dashboard');
+
+Route::post('/logout',
+        [AuthController::class,'logout'])
+        ->name('logout');
+
 
  /*
     |--------------------------------------------------------------------------
@@ -102,3 +112,14 @@ Route::get('/dashboard',
 
 
     Route::resource('user', UserController::class);
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Tipe & Tarif Kamar
+    |--------------------------------------------------------------------------
+    */
+
+
+    Route::resource('tipe', TipeKamarController::class);
+});
