@@ -259,22 +259,22 @@ Check In
 
 
 
-<a href="#">
+<li>
 
-<i class="bi bi-box-arrow-right"></i>
+<a href="{{ route('checkout') }}">
 
-Check Out
+Check-Out
 
 </a>
 
+</li>
 
 
 
 <a href="{{ route('laporan.index') }}"
 class="{{ request()->routeIs('laporan.*')?'active':'' }}">
 
-<i class="bi bi-file-earmark-text"></i>
-
+<i class="bi bi-clipboard-data-fill"></i>
 Reports
 
 </a>

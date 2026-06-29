@@ -12,7 +12,9 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\RdashboardController;
 use App\Http\Controllers\CheckinController;
-use App\Http\Controllers\Rreport;
+use App\Http\Controllers\RreportController;
+use App\Http\Controllers\CheckoutController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -230,6 +232,11 @@ Route::get(
 [\App\Http\Controllers\RreportController::class,'index']
 )
 ->name('resepsionis.reports');
+
+Route::get(
+'/checkout',
+[CheckoutController::class,'index']
+)->name('checkout');
 
 
 });

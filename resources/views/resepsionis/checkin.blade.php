@@ -151,7 +151,7 @@ Reservasi
 
 
 
-<input 
+<input
 class="form-control"
 placeholder="Punya kode reservasi? Masukkan di sini..."
 >
@@ -282,18 +282,25 @@ class="form-control"
 
 
 
+<button
+type="button"
+onclick="checkinBerhasil()"
+class="btn btn-success w-100">
 
-
-<button class="btn-checkin">
-
-
-<i class="bi bi-stars"></i>
-
-Selesaikan Check-In
-
+✨ Selesaikan Check-In
 
 </button>
 
+
+<script>
+
+function checkinBerhasil(){
+
+alert("Check-In berhasil diselesaikan!");
+
+}
+
+</script>
 
 
 
