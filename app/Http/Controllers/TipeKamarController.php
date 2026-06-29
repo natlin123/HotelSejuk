@@ -39,49 +39,49 @@ class TipeKamarController extends Controller
             'fasilitas' => 'required'
         ]);
 
-       TipeKamar::create([
-    'nama_tipe' => $request->nama_tipe,
-    'kapasitas' => $request->kapasitas,
-    'harga' => $request->harga,
-    'fasilitas' => $request->fasilitas
-]);
+        TipeKamar::create([
+            'nama_tipe' => $request->nama_tipe,
+            'kapasitas' => $request->kapasitas,
+            'harga' => $request->harga,
+            'fasilitas' => $request->fasilitas
+        ]);
 
         return redirect()
             ->route('tipe.index')
             ->with('success', 'Tipe kamar berhasil ditambahkan');
     }
 
-    public function edit($id)
+    public function edit(int|string $id)
     {
         $tipe = TipeKamar::findOrFail($id);
 
         return view('tipe.edit', compact('tipe'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, int|string $id)
     {
         $request->validate([
             'nama_tipe' => 'required',
             'kapasitas' => 'required',
-            'harga' => 'required',
-             'harga' => 'required'
+            'harga'     => 'required',
+            'fasilitas' => 'required' // Memperbaiki duplicate key 'harga' sebelumnya
         ]);
 
         $tipe = TipeKamar::findOrFail($id);
 
-       $tipe->update([
-    'nama_tipe' => $request->nama_tipe,
-    'kapasitas' => $request->kapasitas,
-    'harga' => $request->harga,
-    'fasilitas' => $request->fasilitas
-]);
+        $tipe->update([
+            'nama_tipe' => $request->nama_tipe,
+            'kapasitas' => $request->kapasitas,
+            'harga' => $request->harga,
+            'fasilitas' => $request->fasilitas
+        ]);
 
         return redirect()
             ->route('tipe.index')
             ->with('success', 'Tipe kamar berhasil diperbarui');
     }
 
-    public function destroy($id)
+    public function destroy(int|string $id)
     {
         TipeKamar::destroy($id);
 

@@ -3,21 +3,18 @@
 @section('content')
 
 <div class="container vh-100">
-
     <div class="row h-100 justify-content-center align-items-center">
-
         <div class="col-md-5">
 
             <div class="card shadow login-card">
-
                 <div class="card-body p-5">
 
-                    <h1 class="text-center fw-bold">
+                    <h2 class="text-center fw-bold mb-2">
                         Selamat Datang
-                    </h1>
+                    </h2>
 
-                    <p class="text-center text-muted">
-                        Silakan masuk ke akun Anda.
+                    <p class="text-center text-muted mb-4">
+                        Silakan masuk ke akun Anda
                     </p>
 
                     @if(session('error'))
@@ -31,40 +28,29 @@
 
                         <div class="mb-3">
                             <label class="form-label">
-                                Masuk Sebagai
+                                Login Sebagai
                             </label>
 
-                            <select
-                                name="role"
-                                class="form-select">
-
-                                <option value="admin">
-                                    Admin
-                                </option>
-
-                                <option value="supervisor">
-                                   Resepsionis
-                                </option>
-
+                            <select name="role" class="form-select" required>
+                                <option value="admin">Admin</option>
+                                <option value="resepsionis">Resepsionis</option>
                             </select>
                         </div>
 
                         <div class="mb-3">
-
                             <label class="form-label">
                                 Username
                             </label>
 
                             <input
                                 type="text"
-                                name="email"
+                                name="username"
                                 class="form-control"
-                                placeholder="Masukkan username">
-
+                                placeholder="Masukkan Username"
+                                required>
                         </div>
 
                         <div class="mb-3">
-
                             <label class="form-label">
                                 Password
                             </label>
@@ -73,43 +59,33 @@
                                 type="password"
                                 name="password"
                                 class="form-control"
-                                placeholder="Masukkan password">
-
+                                placeholder="Masukkan Password"
+                                required>
                         </div>
 
-                        <div class="d-flex justify-content-between mb-3">
+                        <div class="mb-3 form-check">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name="remember"
+                                id="remember">
 
-                            <div>
-                                <input
-                                    type="checkbox"
-                                    name="remember">
-
+                            <label class="form-check-label" for="remember">
                                 Ingat Saya
-                            </div>
-
-                            <a href="#">
-                                Lupa Password?
-                            </a>
-
+                            </label>
                         </div>
 
-                        <button
-                            class="btn btn-login w-100">
-
+                        <button type="submit" class="btn btn-login w-100">
                             Masuk
-
                         </button>
 
                     </form>
 
                 </div>
-
             </div>
 
         </div>
-
     </div>
-
 </div>
 
 @endsection
