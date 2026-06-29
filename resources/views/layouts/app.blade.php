@@ -8,16 +8,12 @@
 
 <title>Sejuk Hotel</title>
 
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
 
-
 <style>
-
 
 body{
     margin:0;
@@ -26,60 +22,40 @@ body{
 }
 
 
-/* SIDEBAR */
-
 .sidebar{
-
     width:250px;
     height:100vh;
-
     position:fixed;
-
     left:0;
     top:0;
-
     background:#1f4d3a;
-
     color:white;
-
 }
-
 
 
 .logo{
 
     padding:25px;
-
     font-size:22px;
-
     font-weight:bold;
-
     border-bottom:1px solid rgba(255,255,255,.2);
 
 }
 
 
-
 .sidebar-menu{
-
     margin-top:15px;
-
 }
-
 
 
 .sidebar-menu a{
 
     display:block;
-
     padding:14px 25px;
-
     color:white;
-
     text-decoration:none;
 
 }
-
 
 
 .sidebar-menu a:hover,
@@ -90,16 +66,12 @@ body{
 }
 
 
-
 .sidebar-menu i{
 
     margin-right:10px;
 
 }
 
-
-
-/* MAIN */
 
 .main-content{
 
@@ -108,23 +80,16 @@ body{
 }
 
 
-
 .navbar-custom{
 
     background:white;
-
     padding:15px 30px;
-
     border-bottom:1px solid #ddd;
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 
 }
-
 
 
 .dashboard-content{
@@ -134,62 +99,42 @@ body{
 }
 
 
-
-
-
-/* CARD */
-
 .card{
 
     border:none;
-
     border-radius:15px;
 
 }
-
 
 
 .stat-card{
 
     background:white;
-
     border-radius:15px;
-
     padding:25px;
-
     box-shadow:0 5px 20px rgba(0,0,0,.08);
-
     height:100%;
 
 }
 
 
-
 .stat-label{
 
     font-size:13px;
-
     color:#777;
-
     font-weight:600;
 
 }
 
 
-
 .stat-card h3{
 
     color:#1f4d3a;
-
     font-weight:700;
 
 }
 
-
-
-
 </style>
-
 
 </head>
 
@@ -207,9 +152,7 @@ body{
 
 Sejuk Hotel
 
-
 </div>
-
 
 
 
@@ -218,7 +161,6 @@ Sejuk Hotel
 
 
 @if(Auth::user()->role == 'admin')
-
 
 
 <a href="{{ route('dashboard') }}"
@@ -255,8 +197,6 @@ User
 
 
 
-
-
 <a href="{{ route('tipe.index') }}"
 class="{{ request()->routeIs('tipe.*')?'active':'' }}">
 
@@ -269,7 +209,6 @@ Tipe & Tarif Kamar
 
 
 
-
 <a href="{{ route('laporan.index') }}"
 class="{{ request()->routeIs('laporan.*')?'active':'' }}">
 
@@ -278,8 +217,6 @@ class="{{ request()->routeIs('laporan.*')?'active':'' }}">
 Laporan
 
 </a>
-
-
 
 
 
@@ -310,13 +247,15 @@ Dashboard
 
 
 
-<a href="#">
+<a href="{{ route('resepsionis.checkin') }}"
+class="{{ request()->routeIs('resepsionis.checkin')?'active':'' }}">
 
 <i class="bi bi-box-arrow-in-right"></i>
 
 Check In
 
 </a>
+
 
 
 
@@ -331,7 +270,8 @@ Check Out
 
 
 
-<a href="#">
+<a href="{{ route('laporan.index') }}"
+class="{{ request()->routeIs('laporan.*')?'active':'' }}">
 
 <i class="bi bi-file-earmark-text"></i>
 
@@ -346,19 +286,17 @@ Reports
 
 
 
-</div>
-
 
 </div>
 
+
+</div>
 
 
 
 
 
 <div class="main-content">
-
-
 
 
 
@@ -377,12 +315,10 @@ Reports
 
 
 
-
 <div class="d-flex align-items-center gap-3">
 
 
 <i class="bi bi-bell fs-5"></i>
-
 
 
 
@@ -404,7 +340,6 @@ data-bs-toggle="dropdown">
 
 
 
-
 <ul class="dropdown-menu">
 
 
@@ -419,9 +354,7 @@ Profil
 </li>
 
 
-<li>
-<hr class="dropdown-divider">
-</li>
+<li><hr class="dropdown-divider"></li>
 
 
 
@@ -464,8 +397,6 @@ Logout
 
 
 
-
-
 <div class="dashboard-content">
 
 
@@ -484,9 +415,7 @@ Logout
 
 
 
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 
 
 </body>
