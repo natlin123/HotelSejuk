@@ -6,11 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Booking;
 use Carbon\Carbon;
 
-
 class BookingController extends Controller
 {
-    // Menampilkan form booking
-    public function index($id, $nama)
+    // Form Booking
+    public function index(int $id, string $nama)
     {
         return view('booking.index', [
             'room_id' => $id,
@@ -18,25 +17,17 @@ class BookingController extends Controller
         ]);
     }
 
-    // Menyimpan booking
+    // Simpan Booking
     public function store(Request $request)
     {
-        // Harga per malam berdasarkan kamar
         if ($request->room_id == 1) {
-
-            $hargaPerMalam = 1500000; // Deluxe King
-
+            $hargaPerMalam = 1500000;
         } elseif ($request->room_id == 2) {
-
-            $hargaPerMalam = 950000; // Superior Twin
-
+            $hargaPerMalam = 950000;
         } else {
-
-            $hargaPerMalam = 2500000; // Executive Suite
-
+            $hargaPerMalam = 2500000;
         }
 
-        // Hitung durasi menginap
         $checkin = Carbon::parse($request->checkin);
         $checkout = Carbon::parse($request->checkout);
 
@@ -46,16 +37,11 @@ class BookingController extends Controller
             $durasi = 1;
         }
 
-        // Hitung harga
         $harga = $hargaPerMalam * $durasi;
-
         $pajak = $harga * 0.11;
-
         $total = $harga + $pajak;
 
-        // Simpan ke database
         Booking::create([
-
             'room_id' => $request->room_id,
             'nama_kamar' => $request->nama_kamar,
 
@@ -73,24 +59,22 @@ class BookingController extends Controller
             'jumlah_tamu' => $request->jumlah_tamu,
 
             'durasi' => $durasi,
-
             'harga' => $harga,
             'pajak' => $pajak,
             'total' => $total,
 
             'metode_pembayaran' => 'Transfer Bank',
             'status_pembayaran' => 'Pending',
-            'kode_transaksi' => 'TRX-' . rand(100000,999999)
-
+            'kode_transaksi' => 'TRX-' . rand(100000, 999999)
         ]);
 
-        return redirect('/payment');
+        return redirect()->route('payment');
     }
 
-    // Halaman pembayaran
+    // Halaman Pembayaran
     public function payment()
     {
-        $booking = Booking::latest()->first();
+        $booking = Booking::orderBy('id', 'desc')->first();
 
         return view('booking.payment', compact('booking'));
     }

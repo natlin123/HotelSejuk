@@ -177,12 +177,23 @@ Route::get('/laporan/export',
     Route::post('/setting/password',
     [SettingController::class,'updatePassword'])
     ->name('setting.password');
+<<<<<<< HEAD
 
    /*
     |--------------------------------------------------------------------------
     | Setting
     |--------------------------------------------------------------------------
     */
+=======
+/*
+    |--------------------------------------------------------------------------
+    | RDashboard
+    |--------------------------------------------------------------------------
+    */
+    Route::get('/resepsionis/dashboard',
+[RdashboardController::class,'index'])
+->name('resepsionis.dashboard');
+>>>>>>> ae715dd6d3680042502b350cbeb4cf2983d4cc2e
 
 
     Route::get('/resepsionis/dashboard',
@@ -190,3 +201,6 @@ Route::get('/laporan/export',
 ->name('resepsionis.dashboard');
 
 });
+
+
+

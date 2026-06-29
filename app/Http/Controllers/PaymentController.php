@@ -4,18 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Booking;
-use Barryvdh\DomPDF\Facade\Pdf;
 
 class PaymentController extends Controller
 {
-    public function show($id)
+    public function show(int|string $id)
     {
         $booking = Booking::findOrFail($id);
 
         return view('booking.payment-details', compact('booking'));
     }
 
-    public function confirm(Request $request, $id)
+    public function confirm(Request $request, int|string $id)
     {
         $booking = Booking::findOrFail($id);
 
@@ -27,18 +26,19 @@ class PaymentController extends Controller
         return redirect()->route('payment.success', $booking->id);
     }
 
-    public function success($id)
+    public function success(int|string $id)
     {
         $booking = Booking::findOrFail($id);
 
         return view('booking.success', compact('booking'));
     }
 
-    public function downloadPdf($id)
+    public function downloadPdf(int|string $id)
     {
         $booking = Booking::findOrFail($id);
 
-        $pdf = Pdf::loadView(
+        // Menggunakan helper app('dompdf.wrapper') agar Intelephense tidak error
+        $pdf = app('dompdf.wrapper')->loadView(
             'booking.receipt-pdf',
             compact('booking')
         );
