@@ -10,6 +10,7 @@ use App\Http\Controllers\TipeKamarController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\RdashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -177,6 +178,15 @@ Route::get('/laporan/export',
     [SettingController::class,'updatePassword'])
     ->name('setting.password');
 
+   /*
+    |--------------------------------------------------------------------------
+    | Setting
+    |--------------------------------------------------------------------------
+    */
 
+
+    Route::get('/resepsionis/dashboard',
+[RdashboardController::class,'index'])
+->name('resepsionis.dashboard');
 
 });

@@ -15,7 +15,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = [
-            'email' => $request->email,
+            'username' => $request->username,
             'password' => $request->password,
         ];
 
@@ -23,12 +23,18 @@ class AuthController extends Controller
         {
             $request->session()->regenerate();
 
-            return redirect()->route('dashboard');
+            if (Auth::user()->role == 'admin') {
+                return redirect()->route('dashboard');
+            }
+
+            if (Auth::user()->role == 'resepsionis') {
+                return redirect()->route('resepsionis.dashboard');
+            }
         }
 
         return back()->with(
             'error',
-            'Email atau Password Salah'
+            'Username atau Password Salah'
         );
     }
 
@@ -43,4 +49,3 @@ class AuthController extends Controller
         return redirect('/');
     }
 }
-

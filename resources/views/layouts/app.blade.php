@@ -20,13 +20,10 @@
 
 
 body{
-
     margin:0;
     background:#f5f7f5;
     font-family:'Segoe UI',sans-serif;
-
 }
-
 
 
 /* SIDEBAR */
@@ -102,9 +99,7 @@ body{
 
 
 
-
 /* MAIN */
-
 
 .main-content{
 
@@ -142,8 +137,7 @@ body{
 
 
 
-/* DASHBOARD CARD */
-
+/* CARD */
 
 .card{
 
@@ -153,11 +147,6 @@ body{
 
 }
 
-
-
-
-
-/* LAPORAN */
 
 
 .stat-card{
@@ -198,69 +187,6 @@ body{
 
 
 
-.stat-info{
-
-    color:#198754;
-
-    font-size:14px;
-
-}
-
-
-
-
-.report-card{
-
-    background:white;
-
-    border-radius:15px;
-
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-
-}
-
-
-
-
-
-.progress{
-
-    height:8px;
-
-}
-
-
-
-.progress-bar{
-
-    background:#1f4d3a;
-
-}
-
-
-
-.badge-hunian{
-
-    background:#1f4d3a;
-
-    color:white;
-
-    padding:5px 12px;
-
-    border-radius:20px;
-
-}
-
-
-
-table{
-
-    background:white;
-
-}
-
-
-
 
 </style>
 
@@ -269,7 +195,6 @@ table{
 
 
 <body>
-
 
 
 
@@ -289,6 +214,11 @@ Sejuk Hotel
 
 
 <div class="sidebar-menu">
+
+
+
+@if(Auth::user()->role == 'admin')
+
 
 
 <a href="{{ route('dashboard') }}"
@@ -364,6 +294,58 @@ Pengaturan
 
 
 
+
+@else
+
+
+
+<a href="{{ route('resepsionis.dashboard') }}"
+class="{{ request()->routeIs('resepsionis.dashboard')?'active':'' }}">
+
+<i class="bi bi-speedometer2"></i>
+
+Dashboard
+
+</a>
+
+
+
+<a href="#">
+
+<i class="bi bi-box-arrow-in-right"></i>
+
+Check In
+
+</a>
+
+
+
+<a href="#">
+
+<i class="bi bi-box-arrow-right"></i>
+
+Check Out
+
+</a>
+
+
+
+
+<a href="#">
+
+<i class="bi bi-file-earmark-text"></i>
+
+Reports
+
+</a>
+
+
+
+@endif
+
+
+
+
 </div>
 
 
@@ -385,7 +367,11 @@ Pengaturan
 
 <h5 class="mb-0 fw-bold">
 
-Administrator
+
+{{ Auth::user()->role == 'admin'
+? 'Administrator'
+: 'Resepsionis' }}
+
 
 </h5>
 
@@ -410,7 +396,7 @@ data-bs-toggle="dropdown">
 <i class="bi bi-person-circle"></i>
 
 
-{{ Auth::user()->nama ?? 'Administrator' }}
+{{ Auth::user()->nama ?? 'User' }}
 
 
 </button>
