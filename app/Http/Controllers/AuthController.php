@@ -15,11 +15,11 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = [
-            'username' => $request->username,
+            'email' => $request->email,
             'password' => $request->password,
         ];
 
-        if(Auth::attempt($credentials))
+        if (Auth::attempt($credentials))
         {
             $request->session()->regenerate();
 
@@ -28,7 +28,7 @@ class AuthController extends Controller
 
         return back()->with(
             'error',
-            'Username atau Password Salah'
+            'Email atau Password Salah'
         );
     }
 
@@ -43,3 +43,4 @@ class AuthController extends Controller
         return redirect('/');
     }
 }
+

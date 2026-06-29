@@ -125,8 +125,14 @@
 
             </ul>
 
-            <a href="#" class="btn btn-link text-dark">
+           <!-- LOGIN -->
+
+            <a href="{{ route('login') }}"
+
+               class="btn btn-outline-success rounded-pill me-2">
+
                 Login
+
             </a>
 
             <a href="/booking/1/Deluxe-King"

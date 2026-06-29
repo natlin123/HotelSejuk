@@ -57,7 +57,7 @@
 
                             <input
                                 type="text"
-                                name="username"
+                                name="email"
                                 class="form-control"
                                 placeholder="Masukkan username">
 
