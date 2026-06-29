@@ -209,8 +209,8 @@ Tipe & Tarif Kamar
 
 
 
-<a href="{{ route('laporan.index') }}"
-class="{{ request()->routeIs('laporan.*')?'active':'' }}">
+<a href="{{ route('resepsionis.reports') }}"
+class="{{ request()->routeIs('resepsionis.reports')?'active':'' }}">
 
 <i class="bi bi-file-earmark-bar-graph"></i>
 

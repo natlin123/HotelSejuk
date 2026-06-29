@@ -12,6 +12,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\RdashboardController;
 use App\Http\Controllers\CheckinController;
+use App\Http\Controllers\Rreport;
 
 /*
 |--------------------------------------------------------------------------
@@ -217,6 +218,19 @@ Route::post(
     Route::get('/resepsionis/dashboard',
 [RdashboardController::class,'index'])
 ->name('resepsionis.dashboard');
+
+
+/*
+|--------------------------------------------------------------------------
+| Resepsionis
+|--------------------------------------------------------------------------
+*/
+Route::get(
+'/resepsionis/reports',
+[\App\Http\Controllers\RreportController::class,'index']
+)
+->name('resepsionis.reports');
+
 
 });
 
