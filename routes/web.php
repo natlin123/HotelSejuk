@@ -11,6 +11,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\RdashboardController;
+use App\Http\Controllers\CheckinController;
 
 /*
 |--------------------------------------------------------------------------
@@ -179,12 +180,25 @@ Route::get('/laporan/export',
     ->name('setting.password');
 /*
     |--------------------------------------------------------------------------
-    | RDashboard
+    | Resepsionis
     |--------------------------------------------------------------------------
     */
     Route::get('/resepsionis/dashboard',
 [RdashboardController::class,'index'])
 ->name('resepsionis.dashboard');
+
+Route::get(
+'/resepsionis/checkin',
+[CheckinController::class,'index']
+)
+->name('resepsionis.checkin');
+
+
+Route::post(
+'/resepsionis/checkin',
+[CheckinController::class,'store']
+)
+->name('resepsionis.checkin.store');
 
 
 });
